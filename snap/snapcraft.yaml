@@ -37,6 +37,7 @@ parts:
       - cmake
     build-environment:
       - LGW_PATH: "$SNAPCRAFT_STAGE/extern/lora_gateway/libloragw"
+      - LoraGW_DIR: "$SNAPCRAFT_STAGE/extern/lora_gateway/libloragw"
     override-build: |
       cmake .
       make all
