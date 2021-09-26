@@ -31,7 +31,7 @@ apps:
 
 parts:
   pktfwd:
-    source: https://github.com/helium/packet_forwarder.git
+    source: https://github.com/Xykon/packet_forwarder.git
     plugin: make
     build-packages:
       - cmake
@@ -49,6 +49,7 @@ parts:
       cp -av lora_pkt_fwd/*.sh $SNAPCRAFT_PART_INSTALL/bin/
       # copy configs
       mkdir -p $SNAPCRAFT_PART_INSTALL/etc
+      cp -av lora_pkt_fwd/cfg/* $SNAPCRAFT_PART_INSTALL/etc/
       #cp -av $SNAPCRAFT_STAGE/configs/*.json $SNAPCRAFT_PART_INSTALL/etc/
       # set version
       VER="$(cat VERSION)"
