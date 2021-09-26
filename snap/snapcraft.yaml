@@ -33,7 +33,10 @@ parts:
   loragw:
     source: https://github.com/Xykon/lora_gateway.git
     plugin: make
+    build-packages:
+      - cmake    
     override-build: |
+      cmake .
       make all
       cp -av * $SNAPCRAFT_PART_INSTALL/
     override-prime: |
