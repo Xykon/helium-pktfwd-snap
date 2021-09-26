@@ -33,21 +33,6 @@ parts:
   loragw:
     source: https://github.com/Xykon/lora_gateway.git
     plugin: make
-    override-pull: |
-      snapcraftctl pull
-      # get RAK overlays for the 2245
-      git clone https://github.com/RAKWireless/rak_common_for_gateway.git
-      # copy patched bits in place
-      cp rak_common_for_gateway/lora/rak2245/library.cfg libloragw/library.cfg
-      cp rak_common_for_gateway/lora/rak2245/loragw_spi.native.c libloragw/src/loragw_spi.native.c
-      # copy configs so they get staged
-      mkdir -p configs
-      cp rak_common_for_gateway/lora/rak2245/global_conf/*.json configs/
-      # copy patched forwarder
-      mkdir -p pktfwd-override
-      cp rak_common_for_gateway/lora/rak2245/lora_pkt_fwd.c pktfwd-override/
-      # clean up
-      rm -rf rak_common_for_gateway
     override-build: |
       make all
       cp -av * $SNAPCRAFT_PART_INSTALL/
