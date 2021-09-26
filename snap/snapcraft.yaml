@@ -49,7 +49,7 @@ parts:
       cp -av lora_pkt_fwd/*.sh $SNAPCRAFT_PART_INSTALL/bin/
       # copy configs
       mkdir -p $SNAPCRAFT_PART_INSTALL/etc
-      cp -av $SNAPCRAFT_STAGE/configs/*.json $SNAPCRAFT_PART_INSTALL/etc/
+      #cp -av $SNAPCRAFT_STAGE/configs/*.json $SNAPCRAFT_PART_INSTALL/etc/
       # set version
       VER="$(cat VERSION)"
       echo "setting version to: $VER"
