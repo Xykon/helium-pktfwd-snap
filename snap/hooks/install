@@ -3,7 +3,7 @@
 # copy default config to writable place if it does not exist yet
 # note that we default to EU 86x
 if [ ! -e $SNAP_COMMON/global_conf.json ]; then
-  cp $SNAP/etc/global_conf.eu_863_870.json $SNAP_COMMON/global_conf.json
+  cp $SNAP/etc/global_conf.json.US902.basic $SNAP_COMMON/global_conf.json
 fi
 
 # only start if all interfaces are connected

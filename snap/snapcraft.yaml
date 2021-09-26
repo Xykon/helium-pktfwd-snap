@@ -31,7 +31,7 @@ apps:
 
 parts:
   loragw:
-    source: https://github.com/Lora-net/lora_gateway.git
+    source: https://github.com/Xykon/lora_gateway.git
     plugin: make
     override-pull: |
       snapcraftctl pull
@@ -54,7 +54,7 @@ parts:
     override-prime: |
       echo "not priming loragw build fragments"
   pktfwd:
-    source: https://github.com/Lora-net/packet_forwarder.git
+    source: https://github.com/helium/packet_forwarder
     plugin: make
     after: [ loragw ]
     build-environment:
