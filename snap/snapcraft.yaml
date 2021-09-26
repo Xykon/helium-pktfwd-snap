@@ -54,7 +54,7 @@ parts:
     override-prime: |
       echo "not priming loragw build fragments"
   pktfwd:
-    source: https://github.com/helium/packet_forwarder
+    source: https://github.com/helium/packet_forwarder.git
     plugin: make
     after: [ loragw ]
     build-environment:
