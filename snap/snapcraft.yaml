@@ -36,9 +36,11 @@ parts:
     build-packages:
       - cmake
     build-environment:
-      - LGW_PATH: "$SNAPCRAFT_STAGE/extern/lora_gateway/libloragw"
-      - LoraGW_DIR: "$SNAPCRAFT_STAGE/extern/lora_gateway/libloragw"
+      - LGW_PATH: "$SNAPCRAFT_STAGE/src/extern/lora_gateway/libloragw"
+      - LoraGW_DIR: "$SNAPCRAFT_STAGE/src/extern/lora_gateway/libloragw"
     override-build: |
+      pwd
+      echo "Stage: $SNAPCRAFT_STAGE"
       cmake .
       make all
       # install
