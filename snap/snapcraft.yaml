@@ -41,7 +41,7 @@ parts:
     override-build: |
       pwd
       echo "Stage: $SNAPCRAFT_STAGE"
-      cmake .
+      cmake . -DWITH_VENDORED_HAL=ON
       make all
       # install
       mkdir -p $SNAPCRAFT_PART_INSTALL/bin
