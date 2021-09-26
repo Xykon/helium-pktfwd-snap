@@ -30,25 +30,15 @@ apps:
       - spi
 
 parts:
-  loragw:
-    source: https://github.com/Xykon/lora_gateway.git
-    plugin: make
-    build-packages:
-      - cmake    
-    override-build: |
-      cmake .
-      make all
-      cp -av * $SNAPCRAFT_PART_INSTALL/
-    override-prime: |
-      echo "not priming loragw build fragments"
   pktfwd:
     source: https://github.com/helium/packet_forwarder.git
     plugin: make
-    after: [ loragw ]
+    build-packages:
+      - cmake
     build-environment:
-      - LGW_PATH: "$SNAPCRAFT_STAGE/libloragw"
+      - LGW_PATH: "$SNAPCRAFT_STAGE/extern/libloragw"
     override-build: |
-      cp -av $SNAPCRAFT_STAGE/pktfwd-override/lora_pkt_fwd.c lora_pkt_fwd/src/
+      cmake .
       make all
       # install
       mkdir -p $SNAPCRAFT_PART_INSTALL/bin
@@ -57,7 +47,6 @@ parts:
       # copy configs
       mkdir -p $SNAPCRAFT_PART_INSTALL/etc
       cp -av $SNAPCRAFT_STAGE/configs/*.json $SNAPCRAFT_PART_INSTALL/etc/
-      sed -i 's/"autoquit_threshold":.*$/"autoquit_threshold": 0/' $SNAPCRAFT_PART_INSTALL/etc/*.json
       # set version
       VER="$(cat VERSION)"
       echo "setting version to: $VER"
